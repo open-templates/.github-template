@@ -1,79 +1,37 @@
 <div align="center">
 
+<img src="https://img.shields.io/badge/GitHub-org%20profile-24292f?style=for-the-badge&logo=github&logoColor=white" alt="Organization profile" />
+
 # owner-display-name
 
-**Reusable starter templates — docs, automation, and pairing where it matters.**
+**Open source repositories from your organization.**
 
-[Browse all repositories](https://github.com/orgs/owner-username/repositories) · [Contributing](https://github.com/owner-username/.github/blob/main/CONTRIBUTING.md) · [Code of Conduct](https://github.com/owner-username/.github/blob/main/CODE_OF_CONDUCT.md)
+<p>
+  <a href="https://github.com/orgs/owner-username/repositories"><strong>Repositories</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/owner-username/.github/blob/main/CONTRIBUTING.md"><strong>Contributing</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/owner-username/.github/blob/main/CODE_OF_CONDUCT.md"><strong>Code of Conduct</strong></a>
+</p>
 
 </div>
 
 ---
 
-## How to use
+### Repositories
 
-1. Pick a **standalone** template below, or a **fullstack pack** (frontend + one backend).
-2. Open the repository and click **Use this template** (or clone and customize).
-3. Follow each repo’s `README.md` and `INSTRUCTIONS.md` for setup.
+Add one table row per repository in your organization. Keep summaries to a single line.
 
-> More templates will be added over time. Watch this org for new packs and stacks.
+| Repository | Summary |
+|------------|---------|
+| _your-repo-name_ | _What this repository is for_ |
 
----
-
-## Standalone templates
-
-### Repository templates
-
-| Template | Summary |
-|----------|---------|
-| _Add your repo templates here_ | |
-
-### Package templates
-
-| Template | Summary |
-|----------|---------|
-| _Add your package templates here_ | |
-
-### Fullstack templates
-
-Single-repo apps with API + UI in one deployable unit.
-
-| Template | Summary |
-|----------|---------|
-| _Add your fullstack templates here_ | |
-
----
-
-## Fullstack packs
-
-Optional — frontend + backend templates wired to the same API contract.
-
-### Example pack
-
-| Role | Template | Stack | Summary |
-|------|----------|-------|---------|
-| Frontend | _your-frontend-template_ | React | _One-line summary_ |
-| Backend | _your-api-template_ | Hono | _One-line summary_ |
-
----
-
-## Template map
-
-```text
-owner-username/
-├── Standalone
-│   ├── github-repo-template
-│   └── npm-package-template
-└── Fullstack packs (optional)
-    └── Your pack name
-        ├── frontend: ...
-        └── backend: ...
-```
+> This page is rendered from **`profile/README.md`** in your [`.github`](https://github.com/owner-username/.github) repository — the public face of [github.com/owner-username](https://github.com/owner-username).
 
 ---
 
 <div align="center">
 
-<sub>MIT · Maintained by <a href="https://github.com/owner-username">@owner-username</a></sub>
+<sub>MIT · <a href="https://github.com/owner-username">@owner-username</a></sub>
 
 </div>

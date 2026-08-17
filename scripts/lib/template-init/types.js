@@ -38,6 +38,8 @@
  * @property {string | null} [repo]
  * @property {string | null} [packageName]
  * @property {string | null} [displayName]
+ * @property {string | null} [orgDisplayName]
+ * @property {string | null} [orgTagline]
  * @property {string | null} [authorLogin]
  * @property {string | null} [authorEmail]
  * @property {string | null} [ownerId]
@@ -53,6 +55,8 @@
  * @property {string} repo
  * @property {string} [packageName]
  * @property {string} displayName
+ * @property {string} [orgDisplayName]
+ * @property {string} [orgTagline]
  * @property {string} [bundler]
  * @property {string} [email]
  * @property {string} [ownerId]
@@ -86,6 +90,7 @@
  * @property {'all' | 'keep' | false} [scriptsCleanup]
  * @property {string[]} [scriptsKeep]
  * @property {string} [fixedRepoName]
+ * @property {boolean} [includeOrgProfile]
  */
 
 export {};

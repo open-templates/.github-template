@@ -32,6 +32,13 @@ await initFromTemplate({
 | `prompts.js` | Step-by-step CLI |
 | `manifests/*.js` | Per-template file lists |
 
+### Org meta-repository manifests
+
+| Manifest | Repo name | Includes `profile/README.md` |
+|----------|-----------|------------------------------|
+| `github-org.js` | `.github` (public org profile) | `templates/profile/README.md` → `profile/README.md` |
+| `github-private.js` | `.github-private` (member org profile) | `templates/profile/README.md` → `profile/README.md` |
+
 ## Per-template entry
 
 Keep a thin `scripts/init-from-template.js` (or `.mjs`) that only wires manifest + options.

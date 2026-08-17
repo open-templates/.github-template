@@ -2,12 +2,18 @@
 
 Adopter files with `owner-username`, `owner-display-name`, and `author-github-login` placeholders.
 
-Copied to the repository root by `./scripts/init-from-template.sh`.
+Placeholders in `templates/profile/README.md`: `owner-username`, `owner-display-name`, `org-tagline` (replaced by `./scripts/init-from-template.sh`).
+
+## Org profile (`profile/README.md`)
+
+The file **`templates/profile/README.md`** is the main deliverable: GitHub renders it as the **public** organization profile for all visitors at `github.com/your-org`. Init copies it to **`profile/README.md`** at the repo root.
+
+On this hosted template repo, root **`profile/README.md`** is a placeholder demo; edit **`templates/profile/README.md`** to change what adopters receive.
 
 | File here | Destination |
 |-----------|-------------|
+| **`profile/README.md`** | **`profile/README.md`** (public org homepage) |
 | `README.md` | `README.md` |
-| `profile/README.md` | `profile/README.md` |
 | `INSTRUCTIONS.md` | `INSTRUCTIONS.md` |
 | `LICENSE` | `LICENSE` |
 | `CHANGELOG.md` | `CHANGELOG.md` |

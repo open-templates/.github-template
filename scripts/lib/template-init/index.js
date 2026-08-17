@@ -37,6 +37,7 @@ export async function initFromTemplate(options) {
     scriptsCleanup = false,
     scriptsKeep = [],
     fixedRepoName = null,
+    includeOrgProfile = false,
   } = options;
 
   const args = { ...parseArgs(process.argv), ...rawArgs };
@@ -65,6 +66,7 @@ export async function initFromTemplate(options) {
     templateLabel,
     authorStep,
     fixedRepoName,
+    includeOrgProfile,
   });
 
   let authorOwnerId =

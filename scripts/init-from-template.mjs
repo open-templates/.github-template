@@ -19,6 +19,7 @@ initFromTemplate({
   includeBundler: true,
   defaultBundler: 'none',
   fixedRepoName: '.github',
+  includeOrgProfile: true,
   templateLabel: '.github public org meta-repository template',
   authorStep: {
     stepTitle: 'maintainer (Git owner)',
@@ -27,7 +28,7 @@ initFromTemplate({
   },
   scriptsCleanup: 'all',
   nextSteps:
-    'create the org repo named .github (public), push, then edit profile/README.md',
+    'review git diff, push to .github (public), then edit profile/README.md (from templates/profile/README.md)',
 }).catch((err) => {
   printError(`Init failed: ${err.message}`);
   process.exit(1);

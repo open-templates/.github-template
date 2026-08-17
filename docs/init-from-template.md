@@ -9,6 +9,15 @@ Scaffolds a **public organization meta-repository** (`.github`) — copies perso
 | **Root** (hosted template) | Public face with `@open-templates` branding |
 | **`templates/`** | Adopter files with `owner-username` placeholders |
 
+### `profile/README.md`
+
+| Location | Role |
+|----------|------|
+| **Root** `profile/README.md` | Placeholder demo on the hosted template repo (not the live org catalog) |
+| **`templates/profile/README.md`** | Adopter org homepage — init copies this to `profile/README.md` |
+
+The init manifest in `scripts/lib/template-init/manifests/` includes `profile/README.md` → `profile/README.md`.
+
 `./scripts/init-from-template.sh` runs the `@open-templates` init wizard (Node.js).
 
 ## Run
@@ -30,7 +39,7 @@ The wizard auto-detects your Git identity and organization from `git remote` / `
 
 ```bash
 ./scripts/init-from-template.sh --yes
-./scripts/init-from-template.sh --owner acme-corp --display-name "Acme Corp"
+./scripts/init-from-template.sh --owner acme-corp --org-display-name "Acme Corp" --org-tagline "Starter templates for shipping faster"
 node scripts/init-from-template.mjs --help
 ```
 

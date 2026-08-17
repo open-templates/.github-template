@@ -10,6 +10,8 @@ export function parseArgs(argv) {
     repo: null,
     packageName: null,
     displayName: null,
+    orgDisplayName: null,
+    orgTagline: null,
     authorLogin: null,
     authorEmail: null,
     ownerId: null,
@@ -25,6 +27,8 @@ export function parseArgs(argv) {
     else if (arg === '--repo') args.repo = argv[++i];
     else if (arg === '--package-name') args.packageName = argv[++i];
     else if (arg === '--display-name') args.displayName = argv[++i];
+    else if (arg === '--org-display-name') args.orgDisplayName = argv[++i];
+    else if (arg === '--org-tagline') args.orgTagline = argv[++i];
     else if (arg === '--author-login') args.authorLogin = argv[++i];
     else if (arg === '--author-email') args.authorEmail = argv[++i];
     else if (arg === '--owner-id') args.ownerId = String(argv[++i]);
@@ -50,7 +54,9 @@ Options:
   --owner <login>         GitHub username or org
   --repo <name>           Repository name
   --package-name <name>   npm package name (npm template)
-  --display-name <name>   Author display name
+  --display-name <name>   Author or organization display name
+  --org-display-name <name>  Organization name for profile/README.md
+  --org-tagline <text>    Tagline for profile/README.md
   --author-login <login>  GitHub username for package.json author
   --author-email <email>  Author email (auto-built from GitHub id if omitted)
   --bundler <id>          npm | pnpm | yarn | bun | none

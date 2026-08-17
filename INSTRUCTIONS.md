@@ -9,7 +9,8 @@ A scaffold for the GitHub **public organization meta-repository** (`.github`):
 | Layer | Purpose |
 |-------|---------|
 | **Root** (this repo until init) | @open-templates branding + reference [`profile/README.md`](profile/README.md) |
-| **`templates/`** | Adopter files copied to root by `./scripts/init-from-template.sh` |
+| [`templates/profile/README.md`](templates/profile/README.md) | Adopter public org profile — copied to `profile/README.md` on init |
+| **`templates/`** (other files) | Meta-repo docs copied to root by `./scripts/init-from-template.sh` |
 
 Adopters create a **public** org repo named exactly `.github`, run init, then fill in `profile/README.md` with their template catalog.
 
@@ -56,8 +57,21 @@ Details: [docs/README.md](docs/README.md) · [specs/features/04-github-automatio
 
 1. Read [index.md](index.md) and [specs/FEATURES.md](specs/FEATURES.md).
 2. Distinguish **hosted template** changes (root + `scripts/` + `templates/`) from **adopter** content (copied on init).
-3. Keep `fixedRepoName: '.github'` in `scripts/init-from-template.mjs`.
-4. Never put secrets or internal operational detail in the public `profile/README.md`.
+3. **Org profile edits on this hosted repo:** change [`templates/profile/README.md`](templates/profile/README.md); root [`profile/README.md`](profile/README.md) is a **placeholder demo** only (not the live open-templates catalog).
+4. Keep `fixedRepoName: '.github'` in `scripts/init-from-template.mjs`.
+5. Never put secrets or internal operational detail in the public `profile/README.md`.
+
+---
+
+## Repository map
+
+```text
+profile/README.md                 # reference public org profile (hosted demo)
+templates/profile/README.md       # adopter profile → profile/README.md on init
+templates/                        # other adopter files → repo root on init
+scripts/init-from-template.mjs    # manifest includes profile/README.md
+specs/features/03-org-profile.md  # public vs optional member profile contract
+```
 
 ---
 

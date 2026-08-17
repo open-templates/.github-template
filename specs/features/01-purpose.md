@@ -13,6 +13,7 @@ Scaffold a [**`.github`**](https://docs.github.com/en/organizations/collaboratin
 | Deliverable | Role |
 |-------------|------|
 | `profile/README.md` | **Public** organization profile (template catalog for all visitors) |
+| `templates/profile/README.md` | Adopter source copied to `profile/README.md` on init |
 | Root governance docs | `README`, `INSTRUCTIONS`, `CHANGELOG` for maintainers |
 | `.github/` automation | Dependabot, CODEOWNERS, issue/PR templates |
 

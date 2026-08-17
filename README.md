@@ -17,6 +17,28 @@ cd .github-template
 
 The hosted repo keeps **@open-templates** branding in root markdown until you run init. See [docs/init-from-template.md](docs/init-from-template.md).
 
+## Two layers
+
+| Location | `profile/README.md` |
+|----------|---------------------|
+| **Root** [`profile/README.md`](profile/README.md) | Hosted **demo** layout (placeholder catalog — not the live open-templates org index) |
+| [`templates/profile/README.md`](templates/profile/README.md) | Adopter org profile — placeholders: `owner-username`, `owner-display-name`, default tagline |
+
+After init, edit **`profile/README.md`** in your org repo to list your templates. On this hosted template, edit **`templates/profile/README.md`** to change what adopters receive.
+
+## Repository layout
+
+```text
+profile/README.md              # reference org profile (until init overwrites in adopter clone)
+templates/
+├── profile/README.md          # adopter org profile → copied to profile/README.md
+├── README.md                  # adopter meta-repo landing
+├── INSTRUCTIONS.md
+└── …                          # see templates/ABOUT_TEMPLATES.md
+scripts/                       # init wizard (removed after init)
+specs/features/                # purpose, init, org profile, automation
+```
+
 ### What you get after init
 
 | Path | Role |
@@ -30,7 +52,7 @@ Workflow and issue template reference: **[docs/README.md](docs/README.md)** · [
 
 ## Reference implementation
 
-The [open-templates/.github](https://github.com/open-templates/.github) repository is the live public catalog for [@open-templates](https://github.com/open-templates). Use it as inspiration after init.
+The live public catalog for [@open-templates](https://github.com/open-templates) is [open-templates/.github](https://github.com/open-templates/.github). Use it as inspiration **after** init — do not copy it into this template repo’s root `profile/README.md`.
 
 ## License
 

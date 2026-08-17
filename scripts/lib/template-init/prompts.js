@@ -19,10 +19,19 @@ import {
   muted,
 } from './terminal.js';
 
+function resolveOrgProfileFields(owner, args) {
+  const orgDisplayName =
+    args.orgDisplayName ?? args.displayName ?? titleCase(owner);
+  const orgTagline =
+    args.orgTagline ??
+    `Open source from ${orgDisplayName}`;
+  return { orgDisplayName, orgTagline };
+}
+
 /**
  * @param {import('./types.js').GitContext} git
  * @param {import('./types.js').InitArgs} args
- * @param {{ includePackageName?: boolean, includeAuthorStep?: boolean, includeBundler?: boolean, defaultBundler?: string, templateLabel?: string, authorStep?: import('./types.js').AuthorStepConfig, fixedRepoName?: string | null }} options
+ * @param {{ includePackageName?: boolean, includeAuthorStep?: boolean, includeBundler?: boolean, includeOrgProfile?: boolean, defaultBundler?: string, templateLabel?: string, authorStep?: import('./types.js').AuthorStepConfig, fixedRepoName?: string | null }} options
  * @returns {Promise<import('./types.js').InitConfig>}
  */
 export async function resolveConfigInteractive(git, args, options = {}) {
@@ -30,6 +39,7 @@ export async function resolveConfigInteractive(git, args, options = {}) {
     includePackageName = false,
     includeAuthorStep = false,
     includeBundler = false,
+    includeOrgProfile = false,
     defaultBundler = 'npm',
     templateLabel = 'template init',
     authorStep = {},
@@ -43,6 +53,7 @@ export async function resolveConfigInteractive(git, args, options = {}) {
       includeBundler,
       defaultBundler,
       fixedRepoName,
+      includeOrgProfile,
     });
   }
 
@@ -85,12 +96,29 @@ export async function resolveConfigInteractive(git, args, options = {}) {
     );
   }
 
-  const displayName =
-    author?.authorDisplayName ??
-    (await promptText(
-      'Author / maintainer display name',
-      args.displayName ?? git.displayName ?? titleCase(owner)
-    ));
+  let orgDisplayName = titleCase(owner);
+  let orgTagline = `Open source from ${orgDisplayName}`;
+
+  if (includeOrgProfile) {
+    const orgStep = (includeAuthorStep ? 2 : 1) + 1;
+    step(orgStep, 'organization profile');
+    orgDisplayName = await promptText(
+      'Organization display name',
+      args.orgDisplayName ?? args.displayName ?? titleCase(owner)
+    );
+    orgTagline = await promptText(
+      'Organization tagline (shown on profile/README.md)',
+      args.orgTagline ?? `Open source from ${orgDisplayName}`
+    );
+  }
+
+  const displayName = includeOrgProfile
+    ? orgDisplayName
+    : author?.authorDisplayName ??
+      (await promptText(
+        'Author / maintainer display name',
+        args.displayName ?? git.displayName ?? titleCase(owner)
+      ));
 
   let bundler = defaultBundler;
   if (includeBundler) {
@@ -122,6 +150,10 @@ export async function resolveConfigInteractive(git, args, options = {}) {
       value: `https://github.com/${author.authorLogin}`,
     });
   }
+  if (includeOrgProfile) {
+    summaryRows.push({ label: 'Org name', value: orgDisplayName });
+    summaryRows.push({ label: 'Org tagline', value: orgTagline });
+  }
   summaryRows.push({ label: 'Owner', value: owner });
   summaryRows.push({ label: 'Repo', value: repo });
   if (includePackageName) summaryRows.push({ label: 'Package', value: packageName });
@@ -140,6 +172,8 @@ export async function resolveConfigInteractive(git, args, options = {}) {
     repo,
     packageName,
     displayName,
+    orgDisplayName: includeOrgProfile ? orgDisplayName : undefined,
+    orgTagline: includeOrgProfile ? orgTagline : undefined,
     bundler,
     ...author,
   };
@@ -172,15 +206,20 @@ async function buildConfigFromDefaults(git, args, options) {
     }
   }
 
+  const { orgDisplayName, orgTagline } = resolveOrgProfileFields(owner, args);
+
   return {
     owner,
     repo,
     packageName: args.packageName ?? repo,
-    displayName:
-      author?.authorDisplayName ??
-      args.displayName ??
-      git.displayName ??
-      titleCase(owner),
+    displayName: options.includeOrgProfile
+      ? orgDisplayName
+      : author?.authorDisplayName ??
+        args.displayName ??
+        git.displayName ??
+        titleCase(owner),
+    orgDisplayName: options.includeOrgProfile ? orgDisplayName : undefined,
+    orgTagline: options.includeOrgProfile ? orgTagline : undefined,
     bundler: args.bundler ?? options.defaultBundler ?? 'npm',
     ...author,
   };

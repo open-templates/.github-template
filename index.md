@@ -10,6 +10,8 @@ OKF knowledge bundle for the public GitHub organization meta-repository (`.githu
 
 * [README.md](README.md) - quick start
 * [INSTRUCTIONS.md](INSTRUCTIONS.md) - init and org profile governance
+* [profile/README.md](profile/README.md) - hosted demo org profile (placeholder — not live catalog)
+* [templates/profile/README.md](templates/profile/README.md) - adopter org profile (copied on init)
 * [templates/ABOUT_TEMPLATES.md](templates/ABOUT_TEMPLATES.md) - adopter file manifest
 
 ## Features

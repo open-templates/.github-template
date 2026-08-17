@@ -2,6 +2,8 @@ import { AUTHOR_EMAIL_PLACEHOLDER } from './author.js';
 import { titleCase } from './git-context.js';
 
 const PLACEHOLDER_EMAIL = 'owner-id+owner-username@users.noreply.github.com';
+const DEFAULT_ORG_TAGLINE =
+  'Open source repositories from your organization.';
 
 /**
  * @param {import('./types.js').InitConfig} config
@@ -13,6 +15,8 @@ export function buildReplacements(config) {
     repo,
     packageName,
     displayName,
+    orgDisplayName,
+    orgTagline,
     email,
     authorLogin,
     authorDisplayName,
@@ -26,6 +30,10 @@ export function buildReplacements(config) {
   const authorEmailVal =
     authorEmail ?? email ?? `${authorLoginVal}@users.noreply.github.com`;
 
+  const resolvedOrgName = orgDisplayName ?? displayName ?? titleCase(owner);
+  const resolvedOrgTagline =
+    orgTagline ?? `Open source from ${resolvedOrgName}`;
+
   return [
     [AUTHOR_EMAIL_PLACEHOLDER, authorEmailVal],
     ['author-github-login', authorLoginVal],
@@ -36,7 +44,10 @@ export function buildReplacements(config) {
     ['@owner-username', `@${owner}`],
     [`@owner-username%2Fpackage-name`, `@${owner}%2F${packageName}`],
     [`%40owner-username%2Fpackage-name`, `%40${owner}%2F${packageName}`],
-    ['owner-display-name', authorNameVal],
+    ['owner-display-name', resolvedOrgName],
+    ['org-display-name', resolvedOrgName],
+    ['org-tagline', resolvedOrgTagline],
+    [DEFAULT_ORG_TAGLINE, resolvedOrgTagline],
     ['repo-display-name', titleCase(repo)],
     ['package-name', packageName ?? repo],
     ['repo-name', repo],
